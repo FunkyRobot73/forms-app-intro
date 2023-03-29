@@ -2,6 +2,16 @@
     <p>
         <label>Name</label>
         <input type="text" formControlName="name">
+        
+        
+        <span *ngIf="nameFormControl.touched && nameFormControl.errors?.['required']">
+            The name field is required!
+        </span>
+
+        <span *ngIf="nameFormControl.dirty && nameFormControl.errors?.['minlength']">
+            The name must be at least 3 characters!
+        </span>
+
     </p>
     <p>
         <label>Age</label>
@@ -10,11 +20,20 @@
     <p>
         <label>Email</label>
         <input type="email" formControlName="email">
+
+        <span *ngIf="emailFormControl.touched && emailFormControl.errors?.['email']">
+            The email field must be valid!
+        </span>
+
     </p>
     <p>
         <label>UserName</label>
         <input type="text" formControlName="username">
+
+        <span *ngIf="usernameFormControl.touched && usernameFormControl.errors?.['prohibited']">
+            Invalid username!
+        </span>
     </p>
 
-    <button type="button" (click)="onSubmit()">Sign Up</button>
+    <button type="button" (click)="onSubmit()" [disabled]="studentForm.invalid">Sign Up</button>
 </form>
