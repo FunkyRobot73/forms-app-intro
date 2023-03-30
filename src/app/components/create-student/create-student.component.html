@@ -1,8 +1,11 @@
-<form [formGroup]='studentForm'>
+<form class="form-style-9" [formGroup]='studentForm'>
+    <ul>
+        <li>
     <p>
-        <label>Name</label>
-        <input type="text" formControlName="name">
         
+        <input type="text" formControlName="name" class="field-style field-split align-left" placeholder="Name">
+        
+        <br>
         
         <span *ngIf="nameFormControl.touched && nameFormControl.errors?.['required']">
             The name field is required!
@@ -13,27 +16,37 @@
         </span>
 
     </p>
+</li>
+<li>
     <p>
-        <label>Age</label>
-        <input type="number" formControlName="age">
+        
+        <input type="number" formControlName="age" class="field-style field-split align-left" placeholder="Age">
+    
     </p>
+</li>
+<li>
     <p>
-        <label>Email</label>
-        <input type="email" formControlName="email">
-
+        
+        <input type="email" formControlName="email"  class="field-style field-split align-left" placeholder="me@sample.com">
+        <br>
         <span *ngIf="emailFormControl.touched && emailFormControl.errors?.['email']">
             The email field must be valid!
         </span>
 
     </p>
+</li>
+<li>
     <p>
-        <label>UserName</label>
-        <input type="text" formControlName="username">
-
+        
+        <input type="text" formControlName="username" class="field-style field-split align-left" placeholder="UserName73">
+        <br>
         <span *ngIf="usernameFormControl.touched && usernameFormControl.errors?.['prohibited']">
             Invalid username!
         </span>
     </p>
-
+</li>
+<li>
     <button type="button" (click)="onSubmit()" [disabled]="studentForm.invalid">Sign Up</button>
+</li>
+</ul>
 </form>
