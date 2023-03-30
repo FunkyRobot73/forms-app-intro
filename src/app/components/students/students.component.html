@@ -1,7 +1,4 @@
-<div class="card container form-style-9" *ngFor="let stud of students">
-    <div class="card-body">
-        <h5 class="card-title">{{ stud.name }}</h5>
-        <p class="card-text">{{ stud.country }}</p>
-        <a [routerLink]="['/view-student',stud.id]" class="btn btn-primary">View Student</a>
-    </div>
+<div  *ngFor="let stud of students">
+    <app-student [student_data]="stud"></app-student>
 </div>
+
