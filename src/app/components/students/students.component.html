@@ -1,4 +1,4 @@
 <div  *ngFor="let stud of students">
-    <app-student [student_data]="stud"></app-student>
+    <app-student [student_data]="stud" (deleteEvent)="deleteStudent($event)"></app-student>
 </div>
 
