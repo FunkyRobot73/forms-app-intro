@@ -10,10 +10,12 @@ import { StudentsService } from 'src/app/services/students.service';
 })
 export class ViewStudentComponent {
 
-  student:Istudent;
+  student!:Istudent;
 
   constructor(private routeService:ActivatedRoute, private studentService:StudentsService) {
     let studentId = (routeService.snapshot.paramMap.get('student_id'));
-    this.student = studentService.getStudentInfo(studentId);
+    studentService.getStudentInfo(studentId).subscribe((result) => {
+      this.student = result;
+    });
   }
 }

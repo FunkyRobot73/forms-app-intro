@@ -15,11 +15,10 @@ export class StudentsService {
     return this.http.get<Istudent[]>(this.url)  //in the DB
   }
 
-  getStudentInfo(id:any) : any{
-    return students.find((item) => {
-      return item.id === parseInt(id);
-    })
-  }
+  getStudentInfo(student_id:any) {
+    return this.http.get<Istudent>(this.url + "/" + student_id);
+    }
+  
   deleteStudent(student_id:number) {
     return this.http.delete<Istudent>(this.url + "/" + student_id);
   }
