@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Istudent } from 'src/app/interfaces/istudent';
 import { StudentsService } from 'src/app/services/students.service';
 
@@ -7,12 +7,16 @@ import { StudentsService } from 'src/app/services/students.service';
   templateUrl: './students.component.html',
   styleUrls: ['./students.component.css']
 })
-export class StudentsComponent {
+export class StudentsComponent implements OnInit {
 
   students:Istudent[];
 
   constructor(private studentService:StudentsService) {
     this.students = studentService.getStudents();
+    console.log("this is my constructor");
+  }
+  ngOnInit(): void {
+    console.log("Component Initialized");
   }
   
   deleteStudent(student_id:number) {
