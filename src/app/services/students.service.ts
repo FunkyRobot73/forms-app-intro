@@ -26,4 +26,8 @@ export class StudentsService {
   createStudent(data:any) {
     return this.http.post<Istudent>(this.url, data);
   }
+
+  updateStudent(data:any, student_id:number) {
+    return this.http.put<Istudent>(this.url, + "/" + student_id, data);
+  }
 }

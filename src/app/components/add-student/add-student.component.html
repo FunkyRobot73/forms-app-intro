@@ -1,3 +1,8 @@
+<h1 style="text-align: center;">
+    <span *ngIf="isEdit; else elseButtonText">Edit Student</span>
+        <ng-template #elseButtonText>ADD Student</ng-template>
+</h1>
+
 <form class="form-style-9" [formGroup]='studentForm'>
     <p>
         <label>Name</label>
@@ -13,8 +18,13 @@
     </p>
     <p>
         <label>Department</label>
-        <input type="number" formControlName="dept_id">
+        <select formControlName="dept_id">
+            <option *ngFor="let dept of departments" [value]="dept.id">{{ dept.title }}</option>
+        </select>
     </p>
 
-    <button type="button" (click)="onSubmit()">Sign Up</button>
+    <button type="button" (click)="onSubmit()">
+        <span *ngIf="isEdit; else elseButtonText">Edit Student</span>
+        <ng-template #elseButtonText>Create Student</ng-template>
+    </button>
 </form>

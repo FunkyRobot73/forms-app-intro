@@ -1,9 +1,12 @@
 <div class="card container form-style-9">
-    <div class="card-body">
+    <div class="card-body ">
         <h5 class="card-title">{{ student_data.name }}</h5>
         <p class="card-text">{{ student_data.country }}</p>
         <p class="card-text">{{ student_data.age }}</p>
-        <a [routerLink]="['/view-student',student_data.id]" class="btn btn-primary">View Student</a>
+
+        <a [routerLink]="['/view-student',student_data.id]" class="btn btn-primary ms-2">View Student</a>
+        <a [routerLink]="['/edit-student',student_data.id]" class="btn btn-primary ms-2">Edit Student</a>
         <button type="button" class="btn btn-danger ms-2" (click)="onDelete()">Delete</button>
+    
     </div>
 </div>

@@ -11,6 +11,7 @@ const routes: Routes = [
   {path: 'students', component: StudentsComponent},
   {path: 'teachers', component: TeachersComponent},
   {path: 'add-student', component: AddStudentComponent},
+  {path: 'edit-student/:student_id', component: AddStudentComponent},
   {path: 'create-student', component: CreateStudentComponent},
   {path: 'view-student/:student_id', component: ViewStudentComponent},
   {path: '**', component: NotfoundComponent} //404 Page
