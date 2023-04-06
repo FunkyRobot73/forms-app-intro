@@ -11,6 +11,7 @@ import { TeachersComponent } from './components/teachers/teachers.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { ViewStudentComponent } from './components/view-student/view-student.component';
 import { StudentComponent } from './components/student/student.component';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { StudentComponent } from './components/student/student.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

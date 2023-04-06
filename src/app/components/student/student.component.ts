@@ -12,7 +12,7 @@ export class StudentComponent implements OnChanges {
   @Output() deleteEvent = new EventEmitter();  //Custom Event
 
   onDelete(){
-    if(confirm(`Are you sure you want to selte ${this.student_data.name}?`)){
+    if(confirm(`Are you sure you want to delete ${this.student_data.name}?`)){
       this.deleteEvent.emit(this.student_data.id);  //Triggering our Custom Event
     }
   }

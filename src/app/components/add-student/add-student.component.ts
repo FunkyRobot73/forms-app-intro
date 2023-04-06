@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Validators, FormBuilder } from '@angular/forms';
+import { StudentsService } from 'src/app/services/students.service';
 
 @Component({
   selector: 'app-add-student',
@@ -9,18 +10,24 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class AddStudentComponent {
   studentForm;
 
-  constructor() {
-    this.studentForm = new FormGroup({
-      name: new FormControl(),
-      age: new FormControl(),
-      email: new FormControl(),
-      username: new FormControl(),
+  constructor(private formBuilder:FormBuilder, private studentService:StudentsService) {
+    this.studentForm = formBuilder.group({
+      name: ["", [Validators.required, Validators.minLength(3)]],
+      age: ["", [Validators.required]],
+      country: ["", [Validators.required]],
+      dept_id: ["", [Validators.required]],
+
     });
     
     }
     onSubmit() {
-      console.log(this.studentForm.value);
-      this.studentForm.reset();  //clear form values
+      let student_data =  this.studentForm.value;      
+
+      this.studentService.createStudent(student_data).subscribe((result) => {
+        console.log(result);
+        this.studentForm.reset();  //clear form values
+        alert("Student was created successfully!")
+      })
   }
 }
 

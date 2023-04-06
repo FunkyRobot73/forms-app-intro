@@ -9,11 +9,13 @@ import { StudentsService } from 'src/app/services/students.service';
 })
 export class StudentsComponent implements OnInit {
 
-  students:Istudent[];
+  students!:Istudent[];
 
   constructor(private studentService:StudentsService) {
-    this.students = studentService.getStudents();
-    console.log("this is my constructor");
+    studentService.getStudents().subscribe((results) => {
+      this.students = results;
+    });
+    //console.log("this is my constructor");
   }
   ngOnInit(): void {
     console.log("Component Initialized");
@@ -26,6 +28,12 @@ export class StudentsComponent implements OnInit {
     });
 
     this.students.splice(index, 1);  //Remove student data from array
-    alert('Steudent was deleted successfully!');
+
+this.studentService.deleteStudent(student_id).subscribe((result) => {
+  console.log(result);
+  
+})
+
+    alert('Student was deleted successfully!');
   }
 }

@@ -1,19 +1,30 @@
 import { Injectable } from '@angular/core';
 import { students } from "../data";
+import { HttpClient } from '@angular/common/http';
+import { Istudent } from '../interfaces/istudent';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudentsService {
-  constructor() { }
+  url = "http://localhost:3000/students";
+  constructor(private http:HttpClient) { }
 
   getStudents() {
-    return students;
+    //return students;  <==  was previously returning an Array
+    return this.http.get<Istudent[]>(this.url)  //in the DB
   }
 
   getStudentInfo(id:any) : any{
     return students.find((item) => {
       return item.id === parseInt(id);
     })
+  }
+  deleteStudent(student_id:number) {
+    return this.http.delete<Istudent>(this.url + "/" + student_id);
+  }
+
+  createStudent(data:any) {
+    return this.http.post<Istudent>(this.url, data);
   }
 }
