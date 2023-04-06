@@ -55,11 +55,21 @@ export class AddStudentComponent {
     onSubmit() {
       let student_data =  this.studentForm.value;      
 
+      if(this.isEdit) {
+        
+          this.studentService.updateStudent(student_data, this.editStudentId).subscribe((result) => {
+            console.log(result);
+            
+            alert("Student was Updated successfully!")
+          });
+        } else {
+
       this.studentService.createStudent(student_data).subscribe((result) => {
         console.log(result);
         this.studentForm.reset();  //clear form values
         alert("Student was created successfully!")
-      })
+      });
+    }
   }
 }
 

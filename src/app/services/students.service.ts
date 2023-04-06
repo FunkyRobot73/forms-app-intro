@@ -28,6 +28,6 @@ export class StudentsService {
   }
 
   updateStudent(data:any, student_id:number) {
-    return this.http.put<Istudent>(this.url, + "/" + student_id, data);
+    return this.http.put<Istudent>(this.url + "/" + student_id, data);
   }
 }
